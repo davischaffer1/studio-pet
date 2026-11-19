@@ -27,25 +27,23 @@ npm run preview
 
 ## Onde alterar as informações comerciais
 
-Todo telefone, WhatsApp, Instagram, endereço e horário ficam em **um único arquivo**:
+Todo telefone, WhatsApp, Instagram, endereço, horário e a nota do Google ficam em **um único arquivo**:
 
 `src/config/site.js`
 
-Antes de publicar, substitua os placeholders:
+Dados atuais, confirmados na ficha do Google e no Instagram oficial:
 
-- `WHATSAPP_NUMBER`: apenas números, com DDI e DDD (ex.: `5544999999999`).
-- `whatsappDisplay`: formato visível do telefone.
-- `instagram.handle` e `instagram.url`: perfil oficial.
-- `address.street`, `address.city` e `address.mapsUrl`.
-- `hours`: horários reais de atendimento.
+- **WhatsApp:** (49) 99980-7158
+- **Instagram:** `@studio.pet_esteticaanimal`
+- **Endereço:** Rua Guaporé, 581 — Sala 01, Presidente Médici, Chapecó — SC
+- **Horários:** terça a sexta, 08h–12h e 13h30–18h; sábado, 08h30–12h; domingo e segunda, fechado
+- **Google:** 5,0 ★ com 9 avaliações
 
 As mensagens pré-preenchidas enviadas ao WhatsApp também estão nesse arquivo (`siteConfig.messages`).
 
-> **Importante:** o número `5500000000000`, o endereço, os horários e o Instagram são placeholders de exemplo. Nenhum dado comercial real foi inventado.
+## Avaliações reais
 
-## Conteúdo demonstrativo
-
-Os depoimentos em `src/data/testimonials.js` são ilustrativos e aparecem no site com o selo **“Exemplo”** e o aviso “Conteúdo demonstrativo”. Substitua-os por avaliações reais antes da publicação.
+As avaliações em `src/data/testimonials.js` são reais e foram publicadas no Google. Elas aparecem no site sem selos de demonstração, junto com a nota **5,0**, as estrelas e o link **“Ver todas no Google”**.
 
 Os serviços em `src/data/services.js` não exibem preços: os cards usam o selo **“Sob consulta”** e cada botão abre o WhatsApp com uma mensagem específica do serviço. A estrutura está pronta para receber valores no futuro, se desejado.
 
@@ -60,7 +58,7 @@ src/
     Services.jsx        # cards de serviços
     About.jsx           # sobre a Studio Pet
     Gallery.jsx         # galeria com lightbox acessível
-    Testimonials.jsx    # depoimentos demonstrativos
+    Testimonials.jsx    # avaliações reais do Google
     FinalCTA.jsx        # chamada final
     Footer.jsx          # rodapé completo
     WhatsAppButton.jsx  # botão flutuante
@@ -74,7 +72,7 @@ src/
 public/
   fonts/                # Fredoka e Nunito Sans (self-hosted)
   images/               # fotografias locais (sem dependência externa)
-  favicon.svg
+  brand/                # logo oficial e favicon
 ```
 
 ## Comportamentos implementados
@@ -97,4 +95,4 @@ public/
 
 ## Créditos das imagens
 
-As fotografias são de bancos de imagens gratuitos (Unsplash/Pexels) e estão armazenadas localmente em `public/images`, evitando dependências externas em tempo de execução. Substitua-as por fotos reais do studio quando estiverem disponíveis.
+As fotografias são de bancos de imagens gratuitos (Unsplash/Pexels) e estão armazenadas localmente em `public/images`, evitando dependências externas em tempo de execução. O logo em `public/brand` é o arquivo oficial da Studio Pet. Substitua as fotografias por imagens reais do studio quando estiverem disponíveis.

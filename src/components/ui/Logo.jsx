@@ -10,50 +10,15 @@ export default function Logo({ className, href = '#inicio' }) {
         className,
       )}
     >
-      <span className="relative inline-flex">
-        <svg
-          viewBox="0 0 56 56"
-          className="h-11 w-11 shrink-0 transition-transform duration-500 group-hover:-rotate-6 sm:h-12 sm:w-12"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <circle cx="28" cy="28" r="27" fill="#F7E4EC" />
-          <circle
-            cx="28"
-            cy="28"
-            r="23.5"
-            fill="none"
-            stroke="#D673A0"
-            strokeOpacity="0.22"
-            strokeDasharray="2 5"
-            strokeLinecap="round"
-          />
-          <g fill="#D673A0">
-            <ellipse
-              cx="17.5"
-              cy="23"
-              rx="4.6"
-              ry="6.2"
-              transform="rotate(-20 17.5 23)"
-            />
-            <ellipse cx="26" cy="19" rx="4.6" ry="6.4" />
-            <ellipse
-              cx="34.5"
-              cy="23"
-              rx="4.6"
-              ry="6.2"
-              transform="rotate(20 34.5 23)"
-            />
-            <path d="M26 41.5c-7.2 0-12-4.6-12-9.4 0-4 3.2-7 7.1-7 2 0 3.6 1 4.9 2.3 1.3-1.3 2.9-2.3 4.9-2.3 3.9 0 7.1 3 7.1 7 0 4.8-4.8 9.4-12 9.4Z" />
-          </g>
-          <path
-            d="M43.5 12.8c-1.7-2-4.4-.9-4.4 1.3 0 1.9 2.7 3.3 4.4 4.5 1.7-1.2 4.4-2.6 4.4-4.5 0-2.2-2.7-3.3-4.4-1.3Z"
-            fill="#7F8F74"
-            stroke="#F3F1E3"
-            strokeWidth="2"
-          />
-        </svg>
-      </span>
+      <img
+        src="/brand/logo.png"
+        alt=""
+        width="320"
+        height="320"
+        className="h-11 w-11 shrink-0 rounded-[0.9rem] shadow-[0_10px_24px_-14px_rgba(153,85,101,0.65)] ring-1 ring-rose-deep/10 transition-transform duration-500 group-hover:-rotate-3 sm:h-12 sm:w-12 lg:h-[52px] lg:w-[52px]"
+        aria-hidden="true"
+        decoding="async"
+      />
 
       <span className="flex min-w-0 flex-col">
         <span className="font-display text-[1.32rem] leading-none tracking-[-0.02em] sm:text-[1.42rem]">

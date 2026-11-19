@@ -5,7 +5,7 @@ import { PawMark, Sparkle } from './ui/Decor'
 import { siteConfig, whatsappLink } from '../config/site'
 
 export default function FinalCTA() {
-  const { address, hours } = siteConfig.contact
+  const { address, hoursSummary } = siteConfig.contact
 
   return (
     <section id="contato" className="relative bg-cream py-20 lg:py-28">
@@ -71,9 +71,9 @@ export default function FinalCTA() {
                     aria-hidden="true"
                   />
                   <span>
-                    {hours[0].label}, {hours[0].value}
+                    {hoursSummary.weekdays}
                     <br />
-                    {hours[1].label}, {hours[1].value}
+                    {hoursSummary.saturday}
                   </span>
                 </p>
               </div>

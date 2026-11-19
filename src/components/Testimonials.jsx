@@ -1,10 +1,29 @@
-import { Info, MessageCircle, PawPrint, Quote } from 'lucide-react'
-import { testimonials } from '../data/testimonials'
-import { whatsappLink } from '../config/site'
+import { ExternalLink, Quote, Star } from 'lucide-react'
+import { reviewSummary, testimonials } from '../data/testimonials'
 import SectionHeading from './ui/SectionHeading'
 import Reveal from './ui/Reveal'
 import Button from './ui/Button'
 import { PawMark, Sparkle } from './ui/Decor'
+import { cx } from '../lib/utils'
+
+function Stars({ size = 14, className }) {
+  return (
+    <span
+      className={cx('inline-flex items-center gap-0.5', className)}
+      aria-hidden="true"
+    >
+      {Array.from({ length: 5 }).map((_, index) => (
+        <Star
+          key={index}
+          size={size}
+          fill="currentColor"
+          strokeWidth={0}
+          className="text-rose-accent"
+        />
+      ))}
+    </span>
+  )
+}
 
 export default function Testimonials() {
   return (
@@ -28,54 +47,68 @@ export default function Testimonials() {
 
       <div className="container-page relative">
         <SectionHeading
-          eyebrow="Depoimentos"
+          eyebrow="Avaliações"
           title={
             <>
               Quem ama, <span className="text-rose-deep">recomenda!</span>
             </>
           }
-          description="Um espaço para o carinho de quem já confia na Studio Pet."
+          description="Avaliações reais de quem já confia na Studio Pet."
         />
 
-        <Reveal delay={100} className="mt-6 flex justify-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-rose-deep/10 bg-cream-light/70 px-4 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.16em] text-ink-soft">
-            <Info size={12} className="text-rose-deep" aria-hidden="true" />
-            Conteúdo demonstrativo
-          </span>
+        <Reveal delay={100} className="mt-7 flex justify-center">
+          <div
+            role="img"
+            aria-label={`Nota ${reviewSummary.rating} de 5 — ${reviewSummary.count} avaliações no Google`}
+            className="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-full border border-rose-deep/10 bg-cream-light/80 px-5 py-2.5 shadow-card"
+          >
+            <span className="flex items-center gap-2">
+              <span className="font-display text-lg leading-none text-graphite">
+                {reviewSummary.rating}
+              </span>
+              <Stars size={14} />
+            </span>
+            <span
+              className="hidden h-4 w-px bg-rose-deep/20 sm:block"
+              aria-hidden="true"
+            />
+            <span className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-ink-soft">
+              {reviewSummary.count} avaliações no Google
+            </span>
+          </div>
         </Reveal>
 
         <div className="mt-9 grid gap-5 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <Reveal
-              key={testimonial.quote}
+              key={testimonial.author}
               delay={index * 90}
               className="group relative flex flex-col rounded-[1.75rem] bg-cream-light p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-soft sm:p-7"
             >
-              {testimonial.isExample ? (
-                <span className="absolute right-5 top-5 rounded-full bg-peach-tint px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.14em] text-rose-deep">
-                  Exemplo
-                </span>
-              ) : null}
-
               <Quote
                 size={30}
                 className="text-rose/30 transition-colors duration-300 group-hover:text-rose/45"
                 aria-hidden="true"
               />
 
+              <Stars size={13} className="mt-3" />
+
               <blockquote className="mt-4 flex-1 text-[14px] leading-relaxed text-ink/80">
                 {testimonial.quote}
               </blockquote>
 
               <div className="mt-6 flex items-center gap-3 border-t border-rose-deep/10 pt-5">
-                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-rose-tint text-rose-deep">
-                  <PawPrint size={17} aria-hidden="true" />
+                <span
+                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-rose-tint text-[11px] font-extrabold tracking-[0.06em] text-rose-deep"
+                  aria-hidden="true"
+                >
+                  {testimonial.initials}
                 </span>
                 <span>
                   <span className="block text-[13px] font-extrabold leading-tight text-graphite">
                     {testimonial.author}
                   </span>
-                  <span className="mt-0.5 block text-[10px] font-bold uppercase tracking-[0.1em] text-ink-soft">
+                  <span className="mt-0.5 block whitespace-nowrap text-[9px] font-bold uppercase tracking-[0.08em] text-ink-soft lg:text-[10px] lg:tracking-[0.1em]">
                     {testimonial.detail}
                   </span>
                 </span>
@@ -84,24 +117,15 @@ export default function Testimonials() {
           ))}
         </div>
 
-        <Reveal
-          delay={120}
-          className="mt-9 flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:text-left"
-        >
-          <p className="max-w-md text-xs leading-relaxed text-ink-soft">
-            Os depoimentos acima são ilustrativos. Este espaço está pronto para
-            receber as avaliações reais dos seus clientes.
-          </p>
+        <Reveal delay={120} className="mt-10 flex justify-center">
           <Button
-            href={whatsappLink(
-              'Olá! Sou cliente da Studio Pet e gostaria de enviar minha avaliação.',
-            )}
+            href={reviewSummary.url}
             variant="secondary"
             size="sm"
-            icon={MessageCircle}
-            className="shrink-0 bg-cream-light/70"
+            iconRight={ExternalLink}
+            className="bg-cream-light/80"
           >
-            Enviar minha avaliação
+            Ver todas no Google
           </Button>
         </Reveal>
       </div>
